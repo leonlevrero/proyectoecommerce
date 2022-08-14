@@ -12,3 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+function redirecttologin(){
+    if (sessionStorage.getItem("currentloggedin") == null) {
+    window.location = "login.html";
+}
+    }
+redirecttologin();

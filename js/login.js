@@ -9,7 +9,7 @@ function succesCase() {
         button.addEventListener("click", () => {
             if(email.value != "" && pass.value != "") {
                 alert("Registro exitoso");
-                i = 1;
+                sessionStorage.setItem("currentloggedin", email.value);
             }
             else{
                 alert("Error al registrar");
@@ -17,16 +17,19 @@ function succesCase() {
             }
        
             })
-          
+         
 }
+
+function redirecttoindex(){
+    if (sessionStorage.getItem("currentloggedin") != null) {
+    window.location = "index.html";
+}
+  }
  succesCase();
+ redirecttoindex();
  
 
-function redirect(){
-    const boton = document.getElementById("redirect");
-    boton.addEventListener("click", () => {
-        location.href = "google.com";
-    } )
-}
+
+
 
  
