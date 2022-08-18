@@ -21,6 +21,9 @@ fetch(url)
                     <p class="mb-1">${data.products[i].description}</p>
                 </div>
             </div>
+            <div class="btn-group">
+         <button type="button" class="btn btn-xl btn-outline-secondary">Agregar al carrito</button>
+         </div>
         </div> `
        
         document.getElementById("data").innerHTML = body
