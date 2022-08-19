@@ -33,25 +33,31 @@
 </head>
 <body>
   <main class="mt-5">
-    <div class="container">
+    <div class="container " >
       <main class="form-signin">
-        <img class="mb-4" src="jap.png" alt="" width="72" height="57">
-        <form>
-         
-          <h1 class="h3 mb-3 fw-normal">Registrese</h1>
-      
+        <img class="mb-4 " src="/img/login.png" alt="" width="60%" height="60%">
+        <h1 class="h3 mb-3 fw-normal">Registrese</h1>
+        <form class="row g-3 needs-validation " novalidate>
           <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <div class="col-md-4 w-100 " >
+              <label for="validationServer01" class="form-label">Email</label>
+              <input type="text" class="form-control is-valid" id="validationServer01" required>
+            </div>
+              <div class="col-md-4 w-100 " >
+                <label for="validationServer01" class="form-label w-100 ">Contraseña</label>
+                <input type="password" class="form-control is-valid w-100  " id="validationServer02"  required>
+              </div>
+             <!--- <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email </label>
           </div>
           <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Contraseña</label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit" id="reg">Registar</button>
-          
+          </div> -->
+          <button class="w-100 btn btn-lg btn-primary mt-5" type="submit" id="reg">Registar</button>
+           </div>
+           
         </form>
-       
       </main>
       </div>
    
@@ -68,5 +74,4 @@
   </footer>
   <script src="js/login.js"></script>
 </body>
-
 </html>

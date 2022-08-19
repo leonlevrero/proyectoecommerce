@@ -1,19 +1,19 @@
 
 
 function succesCase() {
-    const email = document.getElementById("floatingInput");
-    const pass = document.getElementById("floatingPassword");
+    const email = document.getElementById("validationServer01");
+    const pass = document.getElementById("validationServer02");
     const button = document.getElementById("reg");
-    let i= 0;
+   
 
         button.addEventListener("click", () => {
             if(email.value != "" && pass.value != "") {
-                alert("Registro exitoso");
+               
                 sessionStorage.setItem("currentloggedin", email.value);
             }
             else{
-                alert("Error al registrar");
-                i = 0;
+               
+               
             }
        
             })
@@ -25,6 +25,26 @@ function redirecttoindex(){
     window.location = "index.html";
 }
   }
+  (function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
  succesCase();
  redirecttoindex();
  
