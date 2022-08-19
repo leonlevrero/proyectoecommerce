@@ -1,5 +1,4 @@
 
-
 function succesCase() {
     const email = document.getElementById("validationServer01");
     const pass = document.getElementById("validationServer02");
@@ -25,6 +24,9 @@ function redirecttoindex(){
     window.location = "index.html";
 }
   }
+
+
+  // funcion que agrega la validacion de los campos del formulario de registro
   (function () {
     'use strict'
   
