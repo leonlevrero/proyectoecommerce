@@ -66,7 +66,7 @@ function redirecttoindex(){
 
 
 
- succesCase();
+succesCase();
  redirecttoindex();
  
 
