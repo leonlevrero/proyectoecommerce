@@ -27,13 +27,7 @@ fetch(url)
         </div> `
 
         document.getElementById("data").innerHTML = body
-        /* body += `<div>${data.products[i].currency}
-         ${data.products[i].cost}
-         ${data.products[i].name}
-         ${data.products[i].description}
-         ${data.products[i].soldCount}
-         ${data.products[i].image}</div>`
-         document.getElementById("data").innerHTML = body */
+      
     }
 
 }

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
-function redirecttologin(){
+function redirecttologin(){ //funcion que redirecciona a la pagina de login
     if (sessionStorage.getItem("currentloggedin") == null) {
     window.location = "login.html";
 }
