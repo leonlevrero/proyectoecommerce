@@ -1,11 +1,14 @@
-const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"
+
+let idproducto = localStorage.getItem("catID")
+const url = "https://japceibal.github.io/emercado-api/cats_products/" +idproducto+".json";
+
 fetch(url)
  .then(response => response.json())
  .then(data => mostrarData(data))
  .catch(error => console.log(error))
 
  function mostrarData(data) {
-    console.log(data.products[1].id)
+   
     let body = ''
     for (var i = 0; i <= data.products.length; i++) {
         body += `<div onclick="setCatID(${data.products[i]})" class="list-group-item list-group-item-action cursor-active">
@@ -31,3 +34,5 @@ fetch(url)
     }
 
 }
+
+
