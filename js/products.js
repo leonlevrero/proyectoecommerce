@@ -12,7 +12,7 @@
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1">${currentProductsArray.name} ${currentProductsArray.currency} ${currentProductsArray.cost} </h4>
-                        <small class="text-muted">${currentProductsArray.soldCount} artículos</small>
+                        <small class="text-muted">${currentProductsArray.soldCount} vendidos</small>
                     </div>
                     <p class="mb-1">${currentProductsArray.description}</p>
                 </div>
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         minimo = undefined;
         maximo = undefined;
-        location.reload();
+        location.reload(); // refresco la pagina para que setee todos los valores predeterminados.
     });
 
     document.getElementById("rangofiltrado").addEventListener("click", function(){
