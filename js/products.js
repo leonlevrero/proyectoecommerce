@@ -1,32 +1,20 @@
 
-
-const  preciobajo = "01";
-const preciomayor = "10";
-const cantidad = "Cant.";
-let currentCategoriesArray = [];
-let currentSortCriteria = undefined;
-let minimo = undefined;
-let maximo = undefined;
-
- function mostrarData(data) {
+ function mostrarData() {
     let body = "";
-    for (var i = 0; i <= data.products.length; i++) {
-      let currentCategoriesArray = data.products[i];
-
-      if (((minimo == undefined) || (minimo != undefined && (currentCategoriesArray.cost)>= minimo)) &&
-           ((maximo == undefined) || (maximo != undefined &&(currentCategoriesArray.cost)<= maximo))){
-
-        body += `<div onclick="setCatID(${currentCategoriesArray})" class="list-group-item list-group-item-action cursor-active">
+    for (var i = 0; i <= arrayloco.length; i++) {
+     let currentProductsArray = arrayloco[i];
+        
+        body += `<div onclick="setCatID(${currentProductsArray})" class="list-group-item list-group-item-action cursor-active">
             <div class="row">
                 <div class="col-3">
-                    <img src= ${currentCategoriesArray.image} alt="product image" class="img-thumbnail">
+                    <img src= ${currentProductsArray.image} alt="product image" class="img-thumbnail">
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">${currentCategoriesArray.name} ${currentCategoriesArray.currency} ${currentCategoriesArray.cost} </h4>
-                        <small class="text-muted">${currentCategoriesArray.soldCount} artículos</small>
+                        <h4 class="mb-1">${currentProductsArray.name} ${currentProductsArray.currency} ${currentProductsArray.cost} </h4>
+                        <small class="text-muted">${currentProductsArray.soldCount} artículos</small>
                     </div>
-                    <p class="mb-1">${currentCategoriesArray.description}</p>
+                    <p class="mb-1">${currentProductsArray.description}</p>
                 </div>
             </div>
             <div class="btn-group">
@@ -37,28 +25,34 @@ let maximo = undefined;
         document.getElementById("data").innerHTML = body
       } 
     }
- }
+ 
 
-
-
-
-function sortCategories(criteria, currentCategoriesArray){
+    let arrayloco = []
+    let currentSortCriteria = undefined;
+    let minimo = undefined;
+    let maximo = undefined;
+    let currentProductsArray = [];   //INICIALIZO TODAS LAS VARIABLES
+    const  preciobajo = "01";
+    const preciomayor = "10";
+    const cantidad = "Cant.";
+    
+function sortCategories(criteria, currentProductsArray){
     let result = [];
     if (criteria === preciobajo)
     {
-        result = currentCategoriesArray.sort(function(a, b) {
+        result = currentProductsArray.sort(function(a, b) {    // ORDENA DE MENOR A MAYOR PRECIO
             if ( a.cost < b.cost ){ return -1; }
             if ( a.cost > b.cost ){ return 1; }
             return 0;
         });
     }else if (criteria === preciomayor){
-        result = currentCategoriesArray.sort(function(a, b) {
+        result = currentProductsArray.sort(function(a, b) {   // ORDENA DE MAYOR A MENOR PRECIO
             if ( a.cost > b.cost ){ return -1; }
             if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
     }else if (criteria === cantidad){
-        result = currentCategoriesArray.sort(function(a, b) {
+        result = currentProductsArray.sort(function(a, b) {  // ORDENA DE MAYOR  A MENOR POR CANTIDAD DE VENDIDOS
           
 
             if ( a.soldCount > b.soldCount ){ return -1; }
@@ -74,8 +68,8 @@ function sortCategories(criteria, currentCategoriesArray){
 
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
-    currentSortCriteria = sortCriteria;
-
+    currentSortCriteria = sortCriteria;                              // SEGUN EL CRITERIO DE ORDENAMIENTO SELECCIONADO, SE ORDENA EL ARRAY
+ 
     if(categoriesArray != undefined){
         data = categoriesArray;
     }
@@ -83,7 +77,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
    data.products = sortCategories(currentSortCriteria, data.products);
 
     //Muestro las categorías ordenadas
-    mostrarData(data);
+    mostrarData();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -95,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok"){
             data = resultObj.data
-            mostrarData(data)
+            arrayloco = data.products
+            mostrarData()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -116,10 +111,9 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("filtromin").value = "";
         document.getElementById("filtromax").value = "";
 
-       minimo = undefined;
+        minimo = undefined;
         maximo = undefined;
-
-        mostrarData(data);
+        location.reload();
     });
 
     document.getElementById("rangofiltrado").addEventListener("click", function(){
@@ -127,21 +121,12 @@ document.addEventListener("DOMContentLoaded", function(e){
         //de productos por categoría.
         minimo = document.getElementById("filtromin").value;
         maximo = document.getElementById("filtromax").value;
-
-        if ((minimo != undefined) && (minimo != "") && minimo >= 0){
-            minimo = minimo;
-        }
-        else{
-            minimo = undefined;
-        }
-
-        if ((maximo != undefined) && (maximo != "") && maximo >= 0){
-            maximo = maximo;
-        }
-        else{
-            maximo = undefined;
-        }
-
-        mostrarData(data);
+        console.log(minimo, maximo);
+        console.log(data.products)
+        let  arrayfiltrado = data.products.filter((value) => (!(value.cost  <= minimo) && value.cost <= maximo));
+        console.log(arrayfiltrado);
+        arrayloco = arrayfiltrado;
+        mostrarData();
     });
-});
+   });  
+        
