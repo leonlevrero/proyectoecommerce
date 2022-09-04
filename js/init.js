@@ -39,3 +39,11 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+function usuario(){ //funcion que muestra el nombre del usuario logueado
+  sessionStorage.getItem("currentloggedin")
+  let  a = ""
+  a += `<a class="nav-link" href="perfil.html">${sessionStorage.getItem("currentloggedin")} </a> `
+  document.getElementById("usuario1").innerHTML = a
+    }
+    usuario();

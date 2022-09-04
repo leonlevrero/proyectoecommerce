@@ -1,8 +1,10 @@
 
+
+ 
  function mostrarData() {
     let body = "";
-    for (var i = 0; i <= arrayloco.length; i++) {
-     let currentProductsArray = arrayloco[i];
+    for (var i = 0; i <= arrayaux.length; i++) {
+     let currentProductsArray = arrayaux[i];
         
         body += `<div onclick="setCatID(${currentProductsArray})" class="list-group-item list-group-item-action cursor-active">
             <div class="row">
@@ -25,9 +27,9 @@
         document.getElementById("data").innerHTML = body
       } 
     }
- 
+    
 
-    let arrayloco = []
+    let arrayaux = []
     let currentSortCriteria = undefined;
     let minimo = undefined;
     let maximo = undefined;
@@ -83,31 +85,31 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-let idproducto = localStorage.getItem("catID")
+let idproducto = localStorage.getItem("catID") // paso el id del producto a la variable idproducto
 const url = "https://japceibal.github.io/emercado-api/cats_products/" +idproducto+".json";
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok"){
             data = resultObj.data
-            arrayloco = data.products
+            arrayaux = data.products
             mostrarData()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 
-    document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowCategories(preciobajo);
+    document.getElementById("sortAsc").addEventListener("click", function(){ // CUANDO HAGO CLICK EN EL BOTON DE ORDENAR DE MENOR A MAYOR PRECIO, SE EJECUTA LA FUNCION
+        sortAndShowCategories(preciobajo); 
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function(){
+    document.getElementById("sortDesc").addEventListener("click", function(){ // CUANDO HAGO CLICK EN EL BOTON DE ORDENAR DE MAYOR A MENOR PRECIO, SE EJECUTA LA FUNCION
         sortAndShowCategories(preciomayor);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
+    document.getElementById("sortByCount").addEventListener("click", function(){  // CUANDO HAGO CLICK EN EL BOTON DE RELEVANCIA, SE EJECUTA LA FUNCION
         sortAndShowCategories(cantidad);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("clearRangeFilter").addEventListener("click", function(){ // CUANDO HAGO CLICK EN EL BOTON DE LIMPIAR FILTRO, SE EJECUTA LA FUNCION
         document.getElementById("filtromin").value = "";
         document.getElementById("filtromax").value = "";
 
@@ -116,16 +118,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         location.reload(); // refresco la pagina para que setee todos los valores predeterminados.
     });
 
-    document.getElementById("rangofiltrado").addEventListener("click", function(){
+    document.getElementById("rangofiltrado").addEventListener("click", function(){  // CUANDO HAGO CLICK EN EL BOTON DE FILTRAR, SE EJECUTA LA FUNCION
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minimo = document.getElementById("filtromin").value;
         maximo = document.getElementById("filtromax").value;
-        console.log(minimo, maximo);
-        console.log(data.products)
+    //    console.log(minimo, maximo);
+     //   console.log(data.products)
         let  arrayfiltrado = data.products.filter((value) => (!(value.cost  <= minimo) && value.cost <= maximo));
-        console.log(arrayfiltrado);
-        arrayloco = arrayfiltrado;
+     //   console.log(arrayfiltrado);
+        arrayaux = arrayfiltrado;
         mostrarData();
     });
    });  
