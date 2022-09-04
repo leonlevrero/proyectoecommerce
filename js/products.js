@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("rangofiltrado").addEventListener("click", function(){  // CUANDO HAGO CLICK EN EL BOTON DE FILTRAR, SE EJECUTA LA FUNCION
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
-        minimo = document.getElementById("filtromin").value;
-        maximo = document.getElementById("filtromax").value;
+        minimo = (document.getElementById("filtromin").value || 0); // si no se ingresa un valor, se setea en 0
+        maximo = (document.getElementById("filtromax").value ||  9999999); // si no se ingresa un valor, se setea el valor maximo en 9999999
     //    console.log(minimo, maximo);
      //   console.log(data.products)
         let  arrayfiltrado = data.products.filter((value) => (!(value.cost  <= minimo) && value.cost <= maximo));
