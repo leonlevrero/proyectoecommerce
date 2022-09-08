@@ -1,4 +1,7 @@
-
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
 
  
  function mostrarData() {
@@ -6,7 +9,7 @@
     for (var i = 0; i <= arrayaux.length; i++) {
      let currentProductsArray = arrayaux[i];
         
-        body += `<div onclick="setCatID(${currentProductsArray})" class="list-group-item list-group-item-action cursor-active">
+        body += `<div onclick="setProductID(${currentProductsArray.id})" id="producto" class="list-group-item list-group-item-action cursor-active">
             <div class="row">
                 <div class="col-3">
                     <img src= ${currentProductsArray.image} alt="product image" class="img-thumbnail">
@@ -23,10 +26,12 @@
          <button type="button" class="btn btn-xl btn-outline-secondary">Agregar al carrito</button>
          </div>
         </div> `
-
+            
         document.getElementById("data").innerHTML = body
+    
       } 
-    }
+      
+ }
     
 
     let arrayaux = []
@@ -131,4 +136,4 @@ document.addEventListener("DOMContentLoaded", function(e){
         mostrarData();
     });
    });  
-        
+  
