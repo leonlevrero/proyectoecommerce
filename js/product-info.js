@@ -5,57 +5,31 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
 
     function mostrarProducto() {
         let body = "";
-            body += `<div onclick="setProductID(${arrayaux})" id="producto" class="list-group-item list-group-item-action cursor-active">
+            body += `<div  onclick="setProductID(${arrayaux})" id="producto">
                 <div class="row">
+                <h1  >
+                Nombre: ${arrayaux.name}
+                <small class="text-muted">Precio ${arrayaux.currency}${arrayaux.cost} </small>
+                </h1>
+                        <p class="mb-1"> <strong> Descripcion: </strong> ${arrayaux.description}</p>
+                  </div>
+             
+                <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb"> 
+                <img src="img/prod${productID}_1.jpg"  class="img-thumbnail" >
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
 
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h1 class="page-header">Nombre ${arrayaux.name}  Precio ${arrayaux.currency} ${arrayaux.cost} </h1>
-                         </div>
-                         <div>
-                            <h2 class="col-sm-3 col-md-3 form-control-label nopaddingtop" Precio ${arrayaux.currency} ${arrayaux.cost} </h2>
-                            <small class="text-muted">${arrayaux.soldCount} vendidos</small>
-                            </div>
-                        </div>
-                        <p class="mb-1"> Descripcion ${arrayaux.description}</p>
-                    </div>
+                <img src="img/prod${productID}_2.jpg"  class="img-thumbnail" >
                 </div>
-            </div>
-                    <div class="row">
-                    <div class="col-md-4">
-                      <div class="thumbnail">
-                        <a href="img/prod${productID}_1.jpg" >
-                          <img src="img/prod${productID}_1.jpg" alt="Lights" style="width:100%">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="thumbnail">
-                        <a href="img/prod${productID}_2.jpg" 
-                          <img src="img/prod${productID}_2.jpg" alt="Nature" style="width:100%">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="thumbnail">
-                      <a href="img/prod${productID}_.jpg" 
-                        <img src="img/prod${productID}_2.jpg" alt="Nature" style="width:100%">
-                      </a>
-                    </div>
-                  </div>
-                    <div class="col-md-4">
-                      <div class="thumbnail">
-                        <a href="img/prod${productID}_3.jpg" >
-                          <img src="img/prod${productID}_3.jpg"  alt="Fjords" style="width:100%">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
+
+                <img src="img/prod${productID}_3.jpg"  class="img-thumbnail" >
                 </div>
-            
-            </div> `
-                
+               
+                </div>
+                </div>
+                  `
             document.getElementById("data").innerHTML = body
         
           } 
@@ -82,46 +56,79 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
                     }
                 }); });
 
+               function mostrarPuntuacion(score) { 
+                let estrellas = `<span class="fa fa-star checked"></span >` 
+                let vacio = `<span class="fa fa-star"></span >`
+                let cuerpo = estrellas.repeat(score) + vacio.repeat(5-score)	
+
+                return cuerpo
+                }
 
 
         function mostrarComentarios() {
              let cuerpo = "" 
                 for (let i = 0; i < coments.length; i++) {
                     let nashe  = coments[i];
-                    cuerpo += ` <div class="fondo_mensaje esquinas m-t-5" >
-                    <div class="titular-comentario contenido-comentario esquinas">
-                        <table cellpadding="1" cellspacing="2&quot;">
-                            <tbody><tr>
-                                <td> Nombre Usuario <b>${nashe.user}</b></td>
-                                <td width="10px"></td>
-                                <td> dice ${nashe.dateTime} :  </td>
-                            </tr>
-                        </tbody></table>
+                    cuerpo += ` <div class="list-group-item" >
+                    <div class="row">
+                        <div class="col-3">
+                          <div class="d-flex w-100 justify-content-between">
+                          <p class="mb-1"> <strong> ${nashe.user} </strong> - ${mostrarPuntuacion(nashe.score)} </p>
+                            </div>     
+                      
                     </div>
-                    <div class="texto_mensaje">${nashe.description}</div>
-                </div> 
-         
-                  
-                 </div>
-                 <br>`  
-                 for (let x = 0; x < nashe.score; x++) {
-                    cuerpo += `<span class="fa fa-star checked"></span>`
+                    <div class="mb-1">${nashe.description}</div>
+                    <div> <p> ${nashe.dateTime} </p> </div>  
 
+                     </div> 
+                  </div> 
+                 </div>
+                 `  
               }
               
             document.getElementById("comentarios").innerHTML = cuerpo
              
             }
-             }
-            const texto =  document.getElementById("valor");
-            const estrellas =  document.getElementById("puntaje");
-            const bcoment = document.getElementById("btnComentar");
-            let agregar = "";
-            bcoment.addEventListener("click", function(){
-               agregar += texto.value
-            //    agregar += estrellas.value
-                document.getElementById("comentarios").appendChild(agregar)
-               document.getElementById("comentarios").innerHTML = agregar
+             
+           
+              
+
+
+
+          
+
+          document.getElementById("btnComentar").addEventListener("click", () => { 
+            let fecha = new Date();
+            let agregar = [];
+            let comentado = {
+                "user": sessionStorage.getItem("currentloggedin"),
+                "product": productID,
+                "description": document.getElementById("valor").value,
+                "score": document.getElementById("puntaje").value,
+                "dateTime": (fecha.getDate() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds())
+                 }
                 
-            }
-            );
+                 if (comentado.description != ""){
+                    if(localStorage.getItem("comentado")) { 
+                   agregar = JSON.parse(localStorage.getItem("comentado"));
+                    agregar.push(comentado);
+
+                 }else { 
+                      agregar.push(comentado);
+                 }
+             };
+               localStorage.getItem("comentado",JSON.stringify(agregar));
+                          
+               document.getElementById("comentarios").innerHTML += agregar;
+
+               document.getElementById("valor").value = "";
+                document.getElementById("puntaje").value = "";
+                location.reload
+
+             
+  
+          
+               
+               
+            } );
+         
