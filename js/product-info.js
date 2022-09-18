@@ -8,8 +8,8 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
             body += `<div  onclick="setProductID(${arrayaux})" id="producto">
                 <div class="row">
                 <h1  >
-                Nombre: ${arrayaux.name}
-                <small class="text-muted">Precio ${arrayaux.currency}${arrayaux.cost} </small>
+                Nombre: ${arrayaux.name} <br>
+                <small class="text-muted">Precio: ${arrayaux.currency}${arrayaux.cost} </small>
                 </h1>
                         <p class="mb-1"> <strong> Descripcion: </strong> ${arrayaux.description}</p>
                   </div>
@@ -41,7 +41,7 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
                     data = resultObj.data
                     arrayaux = data
                     mostrarProducto()
-                    //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+                   
                 }
             }); });
         
@@ -56,6 +56,8 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
                     }
                 }); });
 
+
+                //Funcion para mostrar la puntuacion
                function mostrarPuntuacion(score) { 
                 let estrellas = `<span class="fa fa-star checked"></span >` 
                 let vacio = `<span class="fa fa-star"></span >`
@@ -64,21 +66,21 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
                 return cuerpo
                 }
 
-
+        //Funcion para mostrar los comentarios
         function mostrarComentarios() {
              let cuerpo = "" 
                 for (let i = 0; i < coments.length; i++) {
-                    let nashe  = coments[i];
+                    let comentario = coments[i];
                     cuerpo += ` <div class="list-group-item" >
                     <div class="row">
                         <div class="col-3">
                           <div class="d-flex w-100 justify-content-between">
-                          <p class="mb-1"> <strong> ${nashe.user} </strong> - ${mostrarPuntuacion(nashe.score)} </p>
+                          <p class="mb-1"> <strong> ${comentario.user} </strong> - ${mostrarPuntuacion(comentario.score)} </p>
                             </div>     
                       
                     </div>
-                    <div class="mb-1">${nashe.description}</div>
-                    <div> <p> ${nashe.dateTime} </p> </div>  
+                    <div class="mb-1">${comentario.description}</div>
+                    <div> <p> ${comentario.dateTime} </p> </div>  
 
                      </div> 
                   </div> 
@@ -97,7 +99,7 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
 
           
 
-          document.getElementById("btnComentar").addEventListener("click", () => { 
+       /*   document.getElementById("btnComentar").addEventListener("click", () => { 
             let fecha = new Date();
             let agregar = [];
             let comentado = {
@@ -130,5 +132,5 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
           
                
                
-            } );
+            } ); */
          

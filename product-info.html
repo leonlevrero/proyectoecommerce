@@ -44,11 +44,30 @@
       <div id="data"></div>
       <div id="comentarios"></div>
       <div id="comentar">
-        <input type="text" id="valor">
-        <p> Tu Puntaje  <input id="puntaje" type="number" min="0" max="5"></p>
-        <button id="btnComentar">Comentar</button>
+         
+     
+        <div class="list-group-item" >
+          <div class="row">
+              <div class="col-2">
+                <div class="d-flex flex-column">
+                  <div class="input-group p-2 w-100">
+                    <span class="input-group-text">Deja tu comentario</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                  </div>
+                  <div class="input-group p-2 w-100">
+                    <span class="input-group-text">Calificación</span>
+                    <input type="number"  id="puntaje" class="form-control" aria-label="Amount (to the nearest dollar)"  min="0" max="5">
+                  </div>
+                  <div class="input-group p-2 w-100 ">
+                    <button type="button" class="btn btn-primary">Comentar</button>
+                  </div>     
+                  </div>       
+          </div>
+           </div> 
+        </div> 
+       </div>
       </div>
-    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
