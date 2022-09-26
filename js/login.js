@@ -7,14 +7,14 @@ function succesCase() {
 
         button.addEventListener("click", () => {
             if(email.value != "" && pass.value != "") {
-                sessionStorage.setItem("currentloggedin", email.value);
+                localStorage.setItem("currentloggedin", email.value);
             }
             })
          
 }
 
 function redirecttoindex(){ //funcion que redirecciona a la pagina de index si el usuario esta logueado
-    if (sessionStorage.getItem("currentloggedin") != null) {
+    if (localStorage.getItem("currentloggedin") != null) {
     window.location = "index.html";
 }
   }

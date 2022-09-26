@@ -40,10 +40,27 @@ let getJSONData = function(url){
     });
 }
 
+function cerrarsesion(){ //funcion que cierra sesion y redirige a login
+  localStorage.removeItem("currentloggedin")
+   };
+
+
+
 function usuario(){ //funcion que muestra el nombre del usuario logueado
-  sessionStorage.getItem("currentloggedin")
-  let  a = ""
-  a += `<a class="nav-link" href="perfil.html">${sessionStorage.getItem("currentloggedin")} </a> `
-  document.getElementById("usuario1").innerHTML = a
-    }
-    usuario();
+localStorage.getItem("currentloggedin")
+let  a = ""
+a += `<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  ${localStorage.getItem("currentloggedin")}
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+  <li><a class="dropdown-item" href="mi-perfil.html">Mi Perfil</a></li>
+  <li><a onclick="cerrarsesion()" class="dropdown-item" href="login.html">Cerrar Sesion</a></li>
+</ul>
+</div>  
+`
+document.getElementById("usuario1").innerHTML = a
+  }
+  usuario();
+

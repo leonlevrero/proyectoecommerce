@@ -2,7 +2,16 @@
 const url = "https://japceibal.github.io/emercado-api/products/" + productID + ".json";
  const comentarios = "https://japceibal.github.io/emercado-api/products_comments/" + productID + ".json";
 
+ 
+ 
 
+ //  funcion que apreto el  producto relacionado y me redirige a su html
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
+
+ 
     function mostrarProducto() {
         let body = "";
             body += `<div  onclick="setProductID(${arrayaux})" id="producto">
@@ -30,8 +39,31 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
                 </div>
                 </div>
                   `
-            document.getElementById("data").innerHTML = body
-        
+            
+            let cuerpo = "";
+            for (let i = 0; i < arrayaux.relatedProducts.length; i++) {
+                let related = arrayaux.relatedProducts[i];
+                cuerpo += ` <div  onclick="setProductID(${related.id})" id="producto"  class="list-group-item list-group-item-action cursor-active">
+                <div class="list-group-item" >
+                <div class="row">
+                    <div class="col-3">
+                      
+                      <p class="mb-1"> <strong> ${related.name} </strong>  </p>
+                      </div>
+                      </div>       
+                </div>
+                <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb"> 
+                <img src="img/prod${related.id}_1.jpg"  class="img-thumbnail" >
+                </div>
+
+               
+              </div> 
+             </div>
+             `  
+          }
+          document.getElementById("data").innerHTML = body
+          document.getElementById("related").innerHTML = cuerpo
           } 
           
      
@@ -94,6 +126,7 @@ const url = "https://japceibal.github.io/emercado-api/products/" + productID + "
              
            
               
+          
 
 
 
