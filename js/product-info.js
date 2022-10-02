@@ -38,16 +38,17 @@ function setProductID(id) {
                
                 </div>
                 </div>
+               
                   `
             
             let cuerpo = "";
             for (let i = 0; i < arrayaux.relatedProducts.length; i++) {
                 let related = arrayaux.relatedProducts[i];
-                cuerpo += ` <div  onclick="setProductID(${related.id})" id="producto"  class="list-group-item list-group-item-action cursor-active">
-                <div class="list-group-item" >
+                cuerpo += `
+                 <div  onclick="setProductID(${related.id})" id="producto"  class="container text-center cursor-active">
+                <div class="row" >
                 <div class="row">
                     <div class="col-3">
-                      
                       <p class="mb-1"> <strong> ${related.name} </strong>  </p>
                       </div>
                       </div>       
@@ -56,8 +57,6 @@ function setProductID(id) {
                 <div class="col-lg-4 col-md-4 col-xs-4 thumb"> 
                 <img src="img/prod${related.id}_1.jpg"  class="img-thumbnail" >
                 </div>
-
-               
               </div> 
              </div>
              `  
@@ -117,6 +116,7 @@ function setProductID(id) {
                      </div> 
                   </div> 
                  </div>
+                
                  `  
               }
               

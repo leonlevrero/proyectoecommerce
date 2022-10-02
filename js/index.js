@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function redirecttologin(){ //funcion que redirecciona a la pagina de login
-    if (localStorage.getItem("currentloggedin") = null) {
+    if (localStorage.getItem("currentloggedin") == null) {
     window.location = "login.html";
 }
     }
