@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function(e){
                     <img src= ${cart.image} height="200" width="200" alt="product image" class="img-thumbnail" >
                 </div>
                 <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <p class="mb-1">${cart.name}  </p>
-                        <p class="mb-1">${cart.currency} ${cart.unitCost} </p>.
-                        <p class="mb-1">Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="${cart.count}"> </p>
-                        <p class="mb-1" id="subtotal">Subtotal: ${cart.unitCost * cart.count}</p>
+                    <div  id="cart-style" class="d-flex w-100 justify-content-between">
+                        <p class="mb-1" id="asa">${cart.name}  </p>
+                        <p class="mb-1" id ="asa2">USD <span id="precio" > ${cart.unitCost} </span> </p>
+                        <p class="mb-1" id="cantidad">Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="${cart.count}"> </p>
+                        <p class="mb-1" id="subtotal"> USD ${cart.unitCost} </p>
                     </div> 
                 </div>
             </div>  
@@ -41,15 +41,21 @@ document.addEventListener("DOMContentLoaded", function(e){
             }
             
             document.getElementById("cart-list-container").innerHTML += htmlContentToAppend;
-            calcularSubtotal();
+            const input = document.querySelector('#cantidad');
+            const precio = document.getElementById("precio");
+            const subtotal = document.getElementById("subtotal");
+            input.addEventListener('input', updateValue);
+    
+            function updateValue(e) {
+                subtotal.textContent =  "USD" + " " + e.target.value * precio.textContent;
+                }
         }
         
-        
-        function calcularSubtotal(){
-            const nCantidad = document.getElementById("cantidad");
-        const nPrecio = array.articles.unitCost;
-            let subtotal = nCantidad * nPrecio;
-            document.getElementById("subtotal").innerHTML += subtotal;
-        }
+       
+
+
+
+
+       
        
     
