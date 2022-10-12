@@ -39,29 +39,23 @@
     </div>
   </nav>
   <main>
-    <div class="" id="cart-list-container">
-      <div class="row">
-        <div class="col" id="img">
-          Imagen
-         </div>
-        <div class="col" id="cart-name">
-         Nombre
-        </div>
-        <div class="col" id="cart-cost">
-         Costo
-        </div>
-        <div class="col" id="cart-quantity">
-         Cantidad
-        </div>
-        <div class="col" id="sub">
-         Subtotal
-        </div>
-      </div>
+    <div id="cart-list-container2" class="">
+      <div class="row" id="to-move">
+          <div class="col-3" id="img">
+              <p> Imagen </p>
+          </div>
+          <div class="col">
+              <div  id="cart-style" class="d-flex w-100 justify-content-between">
+                  <p class="mb-1" id="cart-name">Nombre</p>
+                  <p class="mb-1" id ="cart-cost">Precio </p>
+                  <p class="mb-1" id="cart-quantity">Cantidad  </p>
+                  <p class="mb-1" id="sub"> Subtotal </p>
+              </div> 
+          </div>
+      </div>  
+  </div>
     
-        
-    </div>
-    <div>
-    <h2> Tipo de Envio:</h2> </div>
+    <h2 class="m-4"> Tipo de Envio:</h2> 
     <form>
     <div class="form-check">
       <input type="radio" id="Premium" name="fav_language" value="Premium">
@@ -71,27 +65,27 @@
       <input type="radio" id="Standar" name="fav_language" value="Standar">
       <label for="Standard">Standard</label>
     </div>
-    <h2> Direccion de Envio </h2>
-    <div class="input-group input-group-sm mb-3">
+    <h2 class="m-4"> Direccion de Envio </h2>
+    <div class="input-group input-group-sm m-3">
       
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Calle</span>
       </div>
       <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
     </div>
-    <div class="input-group input-group-sm mb-3">
+    <div class="input-group input-group-sm m-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Numero</span>
+        <span class="input-group-text"> Numero</span>
       </div>
       <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
     </div>
-    <div class="input-group input-group-sm mb-3">
+    <div class="input-group input-group-sm m-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Esquina</span>
       </div>
       <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
     </div>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Comprar</button>
+    <button type="button" class="btn btn-success m-3">Comprar</button>
     </form>
   </main>
   <footer class="text-muted">

@@ -15,17 +15,17 @@ function setProductID(id) {
     function mostrarProducto() {
         let body = "";
             body += `<div  onclick="setProductID(${arrayaux})" id="producto">
-                <div class="row">
-                <h1  >
-                Nombre: ${arrayaux.name} <br>
-                <small class="text-muted">Precio: ${arrayaux.currency}${arrayaux.cost} </small>
+                <div class="row mt-5">
+                <h1 >
+               <span id="product-name"> Nombre: ${arrayaux.name} </span> <br>
+                <small class="text-muted">Precio: ${arrayaux.currency} <span id="product-cost"> ${arrayaux.cost} </span> </small>
                 </h1>
-                        <p class="mb-1"> <strong> Descripcion: </strong> ${arrayaux.description}</p>
+                        <p class="mb-3"> <strong> Descripcion: </strong> ${arrayaux.description}</p>
                   </div>
              
                 <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-4 thumb"> 
-                <img src="img/prod${productID}_1.jpg"  class="img-thumbnail" >
+                <img src="img/prod${productID}_1.jpg"  class="img-thumbnail"  id="product-img">
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-4 thumb">
 
@@ -38,14 +38,18 @@ function setProductID(id) {
                
                 </div>
                 </div>
-               
+                <div class="btn-group mt-5">
+                <button id="to-cart" type="button" class="btn btn-success">Añadir al Carrito</button>
+                </div>
+                </div>
+                </div>
                   `
             
             let cuerpo = "";
             for (let i = 0; i < arrayaux.relatedProducts.length; i++) {
                 let related = arrayaux.relatedProducts[i];
                 cuerpo += `
-                 <div  onclick="setProductID(${related.id})" id="producto"  class="container text-center cursor-active">
+                 <div  onclick="setProductID(${related.id})" id="producto"  class="container text-center cursor-active mt-3">
                 <div class="row" >
                 <div class="row">
                     <div class="col-3">
@@ -63,6 +67,10 @@ function setProductID(id) {
           }
           document.getElementById("data").innerHTML = body
           document.getElementById("related").innerHTML = cuerpo
+           localStorage.setItem("product-name", arrayaux.name);
+              localStorage.setItem("product-cost", arrayaux.cost);
+               localStorage.setItem("product-image",img/prod );
+               localStorage.setItem("product-currency", arrayaux.currency);
           } 
           
      
@@ -102,7 +110,7 @@ function setProductID(id) {
              let cuerpo = "" 
                 for (let i = 0; i < coments.length; i++) {
                     let comentario = coments[i];
-                    cuerpo += ` <div class="list-group-item" >
+                    cuerpo += ` <div class="list-group-item mt-4">
                     <div class="row">
                         <div class="col-3">
                           <div class="d-flex w-100 justify-content-between">

@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function(e){
                 <div class="col">
                     <div  id="cart-style" class="d-flex w-100 justify-content-between">
                         <p class="mb-1" id="asa">${cart.name}  </p>
-                        <p class="mb-1" id ="asa2">USD <span id="precio" > ${cart.unitCost} </span> </p>
+                        <p class="mb-1" id ="asa2"> ${cart.currency} <span id="precio" > ${cart.unitCost} </span> </p>
                         <p class="mb-1" id="cantidad">Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="${cart.count}"> </p>
-                        <p class="mb-1" id="subtotal"> USD ${cart.unitCost} </p>
+                        <p class="mb-1" id="subtotal">  ${cart.unitCost} </p>
                     </div> 
                 </div>
             </div>  
@@ -40,21 +40,58 @@ document.addEventListener("DOMContentLoaded", function(e){
                 
             }
             
-            document.getElementById("cart-list-container").innerHTML += htmlContentToAppend;
+            document.getElementById("cart-list-container2").innerHTML += htmlContentToAppend;
             const input = document.querySelector('#cantidad');
             const precio = document.getElementById("precio");
             const subtotal = document.getElementById("subtotal");
             input.addEventListener('input', updateValue);
     
             function updateValue(e) {
-                subtotal.textContent =  "USD" + " " + e.target.value * precio.textContent;
+                subtotal.textContent =  " " + e.target.value * precio.textContent;
                 }
         }
+
+
+         
+        document.addEventListener("DOMContentLoaded", function(){
+            
+          document.getElementById("cart-list-container2").innerHTML += `<div id="producto" class="list-group-item list-group-item-action cursor-active">
+          <div class="row">
+              <div class="col-3">
+                  <img src="${localStorage.getItem("product-image")} + ${localStorage.getItem("productID")} + _1.jpg  " height="200" width="200" alt="product image" class="img-thumbnail" >
+              </div>
+              <div class="col">
+                  <div  id="cart-style" class="d-flex w-100 justify-content-between">
+                      <p class="mb-1" id="asa"> ${localStorage.getItem("product-name")}  </p>
+                      <p class="mb-1" id ="asa2"> <span id="precio" >  ${localStorage.getItem("product-currency")} ${localStorage.getItem("product-cost")} </span> </p>
+                      <p class="mb-1" id="cantidad">Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value=""> </p>
+                      <p class="mb-1" id="subtotal"> $  </p>
+                  </div> 
+              </div>
+          </div>  
+      </div>   `
+      const input = document.querySelector('#cantidad');
+            const precio = document.getElementById("precio");
+            const subtotal = document.getElementById("subtotal");
+            input.addEventListener('input', updateValue);
+    
+            function updateValue(e) {
+                subtotal.textContent =  " " + e.target.value * precio.textContent;
+                }
+          } );
+
+      
         
-       
+        
+  
+
+
+   
 
 
 
+   
+   
 
        
        
