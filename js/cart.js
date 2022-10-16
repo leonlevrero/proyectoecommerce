@@ -19,22 +19,15 @@ document.addEventListener("DOMContentLoaded", function(e){
             for(let i = 0; i < array.articles.length; i++){
                 let cart = array.articles[i];
                 htmlContentToAppend += `
-                <div id="producto" class="list-group-item list-group-item-action cursor-active">
-            <div class="row">
-                <div class="col-3">
-                    <img src= ${cart.image} height="200" width="200" alt="product image" class="img-thumbnail" >
-                </div>
-                <div class="col">
-                    <div  id="cart-style" class="d-flex w-100 justify-content-between">
-                        <p class="mb-1" id="asa">${cart.name}  </p>
-                        <p class="mb-1" id ="asa2"> ${cart.currency} <span id="precio" > ${cart.unitCost} </span> </p>
-                        <p class="mb-1" id="cantidad">Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="${cart.count}"> </p>
-                        <p class="mb-1" id="subtotal">$ ${cart.unitCost} </p>
-                    </div> 
-                </div>
-            </div>  
-        </div>
-            
+               
+
+        <tr>
+        <th scope="col"><img src= ${cart.image} height="200" width="200" alt="product image" class="img-thumbnail" ></th>
+        <th scope="col" id="asa" >${cart.name} </th>
+        <th scope="col" id ="asa2" >${cart.currency} <span id="precio" > ${cart.unitCost} </span></th>
+        <th scope="col" id="cantidad" >Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="${cart.count}"></th>
+        <th scope="col" id="subtotal">${cart.unitCost}  </th>
+      </tr>
                 `
                 
                 
@@ -47,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             input.addEventListener('input', updateValue);
     
             function updateValue(e) {
-                subtotal.textContent =  " " +  e.target.value * precio.textContent;
+                subtotal.textContent =  " " +  e.target.value * precio.textContent ;
                 }
         }
 
