@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(e){
    
     
 
-     // Show array
+     // FUNCION  QUE MUESTRA EL CARRITO DE COMPRAS
         function showCartList(array){
             let htmlContentToAppend = "";
             for(let i = 0; i < array.articles.length; i++){
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                         <p class="mb-1" id="asa">${cart.name}  </p>
                         <p class="mb-1" id ="asa2"> ${cart.currency} <span id="precio" > ${cart.unitCost} </span> </p>
                         <p class="mb-1" id="cantidad">Cantidad: <input type="number" id="cantidad" name="cantidad" min="1" max="100" value="${cart.count}"> </p>
-                        <p class="mb-1" id="subtotal">  ${cart.unitCost} </p>
+                        <p class="mb-1" id="subtotal">$ ${cart.unitCost} </p>
                     </div> 
                 </div>
             </div>  
@@ -47,13 +47,13 @@ document.addEventListener("DOMContentLoaded", function(e){
             input.addEventListener('input', updateValue);
     
             function updateValue(e) {
-                subtotal.textContent =  " " + e.target.value * precio.textContent;
+                subtotal.textContent =  " " +  e.target.value * precio.textContent;
                 }
         }
 
 
          
-        document.addEventListener("DOMContentLoaded", function(){
+   /*      document.addEventListener("DOMContentLoaded", function(){
             
           document.getElementById("cart-list-container2").innerHTML += `<div id="producto" class="list-group-item list-group-item-action cursor-active">
           <div class="row">
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             function updateValue(e) {
                 subtotal.textContent =  " " + e.target.value * precio.textContent;
                 }
-          } );
+          } );*/
 
       
         
