@@ -63,34 +63,50 @@
     <form>
     <div class="form-check">
       <input type="radio" id="Premium" name="fav_language" value="Premium">
-      <label for="Premium">Premium</label><br>
+      <label for="Premium">Premium 2 a 5 Dias (15%) </label><br>
       <input type="radio" id="Express" name="fav_language" value="Express">
-      <label for="Express">Express</label><br>
-      <input type="radio" id="Standar" name="fav_language" value="Standar">
-      <label for="Standard">Standard</label>
+      <label for="Express">Express 5 a 8 Dias (7%) </label><br>
+      <input type="radio" id="Standard" name="fav_language" value="Standard">
+      <label for="Standard">Standard 12 a 15 dias (5%)</label>
     </div>
+    <hr>
     <h2 class="m-4"> Direccion de Envio </h2>
     <div class="input-group input-group-sm m-3">
       
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Calle</span>
       </div>
-      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      <input id="calle" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Bulevar Artigas"> 
     </div>
     <div class="input-group input-group-sm m-3">
       <div class="input-group-prepend">
-        <span class="input-group-text"> Numero</span>
+        <span class="input-group-text" > Numero</span>
       </div>
-      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      <input id="numero" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="1934">
     </div>
     <div class="input-group input-group-sm m-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Esquina</span>
       </div>
-      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      <input id="esquina" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Gallinal">
     </div>
-    <button type="button" class="btn btn-success m-3">Comprar</button>
+    <hr>
     </form>
+    <h2 class="m-4"> Costos </h2>
+    <div class="m-4"> 
+     <p>Subtotal</p> <span id="usd-sub" > </span>    <span id="sub-envio"> </span>
+     <hr>
+    </div>
+    <div class="m-4"> 
+      <p>Costo de Envio</p> <span id="usd-envio" > </span>   <span id="costo-envio"> </span>
+      <hr>
+     </div>
+    
+     <div class="m-4"> 
+      <p>Total($)</p>   <span id="usd-total" > </span>   <span id="costo-total"> </span>
+      <hr>
+     </div>
+     <button id="nashe"> NASHEEE</button>
   </main>
   <footer class="text-muted">
     <div class="container">

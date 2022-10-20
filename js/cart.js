@@ -37,14 +37,65 @@ document.addEventListener("DOMContentLoaded", function(e){
             const input = document.querySelector('#cantidad');
             const precio = document.getElementById("precio");
             const subtotal = document.getElementById("subtotal");
+           
+            
             input.addEventListener('input', updateValue);
     
             function updateValue(e) {
                 subtotal.textContent =  " " +  e.target.value * precio.textContent ;
                 }
-        }
+            } 
+            // LINEAS QUE HACEN QUE SI SE CAMBIA EL CHECKBOX CAMBIE EL SUBTOTAL Y EL TOTAL Y EL ENVIO
+             const checkPremium = document.getElementById('Premium');
+             const checkExpress = document.getElementById('Express');
+             const checkStandard = document.getElementById('Standard')
+             checkPremium.addEventListener('change', (event) => {
+                document.getElementById("sub-envio").innerHTML = subtotal.textContent;
+
+                document.getElementById("usd-total").innerHTML = "USD"
+                document.getElementById("usd-sub").innerHTML = "USD"
+                document.getElementById("usd-envio").innerHTML = "USD"
+
+                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 1.5);
+                document.getElementById("costo-total").innerHTML = parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
+             }) 
+
+             checkExpress.addEventListener('change', (event) => {
+                document.getElementById("sub-envio").innerHTML = subtotal.textContent;
+
+                document.getElementById("usd-total").innerHTML = "USD"
+                document.getElementById("usd-sub").innerHTML = "USD"
+                document.getElementById("usd-envio").innerHTML = "USD"
 
 
+                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.7);
+                document.getElementById("costo-total").innerHTML = parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
+             }) 
+
+             checkStandard.addEventListener('change', (event) => {
+                document.getElementById("sub-envio").innerHTML = subtotal.textContent;
+
+                document.getElementById("usd-total").innerHTML = "USD"
+                document.getElementById("usd-sub").innerHTML = "USD"
+                document.getElementById("usd-envio").innerHTML = "USD"
+
+                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.5);
+                document.getElementById("costo-total").innerHTML =    parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
+
+             }) 
+        document.getElementById("nashe").addEventListener("click",chequear)
+        function chequear(){
+            if ((checkExpress.checked || checkPremium.checked || checkStandard.checked) && document.getElementById("esquina").value != "" && 
+            document.getElementById("numero").value != "" && document.getElementById("calle").value != "") {
+                alert("Puto");
+                
+            } else {
+                alert("nao nao");
+            }
+             }
+        
+
+      
          
    /*      document.addEventListener("DOMContentLoaded", function(){
             
