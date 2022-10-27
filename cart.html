@@ -60,39 +60,36 @@
   </div>
     
     <h2 class="m-4"> Tipo de Envio:</h2> 
-    <form>
-    <div class="form-check">
-      <input type="radio" id="Premium" name="fav_language" value="Premium">
-      <label for="Premium">Premium 2 a 5 Dias (15%) </label><br>
-      <input type="radio" id="Express" name="fav_language" value="Express">
-      <label for="Express">Express 5 a 8 Dias (7%) </label><br>
-      <input type="radio" id="Standard" name="fav_language" value="Standard">
-      <label for="Standard">Standard 12 a 15 dias (5%)</label>
-    </div>
-    <hr>
-    <h2 class="m-4"> Direccion de Envio </h2>
-    <div class="input-group input-group-sm m-3">
+    <form class="was-validated">
+      <div class="mb-3">
+        <div class="form-check m-4">
+          
+          <input type="radio" id="Premium" name="fav_language" value="Premium" class="form-check-input">
+          <label for="form-check-label">Premium 2 a 5 Dias (15%) </label><br>
+          <input type="radio" id="Express" name="fav_language" value="Express"  class="form-check-input">
+          <label for="Express">Express 5 a 8 Dias (7%) </label><br>
+          <input type="radio" id="Standard" name="fav_language" value="Standard"  class="form-check-input">
+          <label for="Standard">Standard 12 a 15 dias (5%)</label>
+        </div>
+        <hr>
+        <h2 class="m-4"> Direccion de Envio </h2>
+        <div class="m-4">
+        <div class="col-md-4">
+          <label for="validationDefault01" class="form-label">Calle</label>
+          <input type="text" class="form-control" id="calle" value="" placeholder="Bulevar" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label">Numero</label>
+          <input type="text" class="form-control" id="numero" value=""  placeholder="1934" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label">Esquina</label>
+          <input type="text" class="form-control" id="esaquina" value="" placeholder="Porongos" required>
+        </div>
+      </div>
       
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Calle</span>
       </div>
-      <input id="calle" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Bulevar Artigas"> 
-    </div>
-    <div class="input-group input-group-sm m-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" > Numero</span>
-      </div>
-      <input id="numero" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="1934">
-    </div>
-    <div class="input-group input-group-sm m-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Esquina</span>
-      </div>
-      <input id="esquina" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Gallinal">
-    </div>
-    <hr>
-    </form>
-    <h2 class="m-4"> Costos </h2>
+      <h2 class="m-4"> Costos </h2>
     <div class="m-4"> 
      <p>Subtotal</p> <span id="usd-sub" > </span>    <span id="sub-envio"> </span>
      <hr>
@@ -106,7 +103,54 @@
       <p>Total($)</p>   <span id="usd-total" > </span>   <span id="costo-total"> </span>
       <hr>
      </div>
-     <button id="nashe"> NASHEEE</button>
+     <button type="button" class="btn btn-primary m-4"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Formas de Pago
+    </button>
+    <div class="m-4">
+      <div class="modal fade m-4" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="credit-card" value="option1" >
+                <label class="form-check-label" for="credit-card">
+                 Tarjeta de Credito
+                </label>
+                <hr>
+                <input class="form-control" type="text" placeholder="Numero de Tarjeta" required>
+                <input class="form-control" type="text" placeholder="Codigo de Seguridad" required>
+                <input class="form-control" type="text" placeholder="Vencimiento MM/AA" required>
+                <hr>
+                <input class="form-check-input" type="radio" name="exampleRadios" id="bank-trans" value="option1" required >
+                <label class="form-check-label" for="bank-trans">
+                  Transferencia Bancaria
+                </label>
+                <input class="form-control" type="text" placeholder="Numero de Cuenta" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+      </div>
+    </div>
+    <button id="nashe" class="btn btn-primary btn-lg " type="submit">Submit form</button>
+      
+
+      </form>
+
+
+
+     
+ 
+
+ 
+ 
   </main>
   <footer class="text-muted">
     <div class="container">

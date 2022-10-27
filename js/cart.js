@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("usd-sub").innerHTML = "USD"
                 document.getElementById("usd-envio").innerHTML = "USD"
 
-                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 1.5);
+                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.15);
                 document.getElementById("costo-total").innerHTML = parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
              }) 
 
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("usd-envio").innerHTML = "USD"
 
 
-                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.7);
+                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.07);
                 document.getElementById("costo-total").innerHTML = parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
              }) 
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("usd-sub").innerHTML = "USD"
                 document.getElementById("usd-envio").innerHTML = "USD"
 
-                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.5);
+                document.getElementById("costo-envio").innerHTML = (subtotal.textContent * 0.05);
                 document.getElementById("costo-total").innerHTML =    parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
 
              }) 
@@ -87,15 +87,36 @@ document.addEventListener("DOMContentLoaded", function(e){
         function chequear(){
             if ((checkExpress.checked || checkPremium.checked || checkStandard.checked) && document.getElementById("esquina").value != "" && 
             document.getElementById("numero").value != "" && document.getElementById("calle").value != "") {
-                alert("Puto");
+                alert("Compra con exito");
                 
             } else {
                 alert("nao nao");
             }
-             }
-        
+             } 
+         
 
-      
+             (function () {
+                'use strict'
+              
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
+              
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                  .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                      if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                      }
+              
+                      form.classList.add('was-validated')
+                    }, false)
+                  })
+              })()
+
+
+
          
    /*      document.addEventListener("DOMContentLoaded", function(){
             
