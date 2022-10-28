@@ -116,20 +116,20 @@
             </div>
             <div class="modal-body">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="credit-card" value="option1" >
+                <input class="form-check-input" type="radio" name="exampleRadios" id="credit-card" value="option1" onclick="disable()" >
                 <label class="form-check-label" for="credit-card">
                  Tarjeta de Credito
                 </label>
                 <hr>
-                <input class="form-control" type="text" placeholder="Numero de Tarjeta" required>
-                <input class="form-control" type="text" placeholder="Codigo de Seguridad" required>
-                <input class="form-control" type="text" placeholder="Vencimiento MM/AA" required>
+                <input id="card-number" class="form-control" type="text" placeholder="Numero de Tarjeta" required>
+                <input id="card-code"  class="form-control" type="text" placeholder="Codigo de Seguridad" required>
+                <input id="card-expire"  class="form-control" type="text" placeholder="Vencimiento MM/AA" required>
                 <hr>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="bank-trans" value="option1" required >
+                <input class="form-check-input" type="radio" name="exampleRadios" id="bank-trans" value="option1" required>
                 <label class="form-check-label" for="bank-trans">
                   Transferencia Bancaria
                 </label>
-                <input class="form-control" type="text" placeholder="Numero de Cuenta" required>
+                <input id="number-bank" class="form-control" type="text" placeholder="Numero de Cuenta" required onclick="disable()">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

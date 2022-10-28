@@ -115,6 +115,25 @@ document.addEventListener("DOMContentLoaded", function(e){
                   })
               })()
 
+           // function to disable the input of the credit card if i click bank transfer
+              function disable(){
+              let creditCard =  document.getElementById("credit-card");
+               let bankTrans = document.getElementById("bank-trans");
+                    if (creditCard.checked){
+                        document.getElementById("card-number").disabled = false;
+                        document.getElementById("card-code").disabled = false;
+                        document.getElementById("card-expire").disabled = false;
+                        document.getElementById("bank-number").disabled = true;
+                    } else if (bankTrans.checked){
+                        document.getElementById("card-number").disabled = true;
+                        document.getElementById("card-code").disabled = true;
+                        document.getElementById("card-expire").disabled = true;
+                        document.getElementById("bank-number").disabled = false;
+                    }
+                }
+                
+
+            
 
 
          
