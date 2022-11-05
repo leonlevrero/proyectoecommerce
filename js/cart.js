@@ -8,7 +8,25 @@ document.addEventListener("DOMContentLoaded", function(e){
     
 });
     
-    
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
   
    
     
@@ -85,27 +103,10 @@ document.addEventListener("DOMContentLoaded", function(e){
              }) 
       
 
-             (function () {
-                'use strict'
+             
               
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation')
-              
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms)
-                  .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                      if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                      }
-              
-                      form.classList.add('was-validated')
-                    }, false)
-                  })
-              })()
 
-           // function to disable the input of the credit card if i click bank transfer
+           // funcion que pone disable en los atributos segun  el que marques
               function disable(){
               
                         document.getElementById("card-number").setAttribute("disabled", "");
@@ -119,23 +120,29 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("number-bank").setAttribute("disabled", "");
             } if (document.getElementById("card-number").disabled) {
                 document.getElementById("card-expire").setAttribute("disabled", "");
-                document.getElementById("card-number").removeAttribute("disabled");
-                document.getElementById("card-code").removeAttribute("disabled");
+                document.getElementById("card-number").removeAttribute("disabled", "");
+                document.getElementById("card-code").removeAttribute("disabled", "");
+
                 
             }
                 
 
-            document.getElementById("nashe").addEventListener("click",chequear)
-            function chequear(){
-                if ((checkExpress.checked || checkPremium.checked || checkStandard.checked) && document.getElementById("esquina").value != "" && 
-                document.getElementById("numero").value != "" && document.getElementById("calle").value != "") {
-                    alert("Compra con exito");
-                    
-                } else {
-                    alert("nao nao");
+         
+
+            // function to check if all the values are not empty
+            function validateForm(){
+                if ((document.getElementById("number-bank").value != "" || document.getElementById("card-number").value != "") &&
+                document.getElementById("calle") != "" && document.getElementById("esquina") != "" && document.getElementById("numero") != "" && 
+                 (document.getElementById("Premium").checked || document.getElementById("Express").checked || document.getElementById("Standard").checked)
+                  ) {
+                    alert("Compra realizada con exito");
+                }else{
+                    alert("Complete todos los campos");
+                  
                 }
-                 } 
-             
+            }
+            document.getElementById("submit").addEventListener("click", validateForm);
+                 
 
 
          
@@ -166,19 +173,4 @@ document.addEventListener("DOMContentLoaded", function(e){
                 }
           } );*/
 
-      
-        
-        
-  
 
-
-   
-
-
-
-   
-   
-
-       
-       
-    
