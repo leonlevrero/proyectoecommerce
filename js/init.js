@@ -42,6 +42,13 @@ let getJSONData = function(url){
 
 function cerrarsesion(){ //funcion que cierra sesion y redirige a login
   localStorage.removeItem("currentloggedin")
+  localStorage.removeItem("1-nombre")
+  localStorage.removeItem("2-nombre")
+  localStorage.removeItem("1-apellido")
+  localStorage.removeItem("2-apellido")
+  localStorage.removeItem("contacto")
+  
+
    };
 
 
