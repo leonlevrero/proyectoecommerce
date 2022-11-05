@@ -83,17 +83,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("costo-total").innerHTML =    parseInt(subtotal.textContent)  + parseInt(document.getElementById("costo-envio").textContent);
 
              }) 
-        document.getElementById("nashe").addEventListener("click",chequear)
-        function chequear(){
-            if ((checkExpress.checked || checkPremium.checked || checkStandard.checked) && document.getElementById("esquina").value != "" && 
-            document.getElementById("numero").value != "" && document.getElementById("calle").value != "") {
-                alert("Compra con exito");
-                
-            } else {
-                alert("nao nao");
-            }
-             } 
-         
+      
 
              (function () {
                 'use strict'
@@ -117,23 +107,35 @@ document.addEventListener("DOMContentLoaded", function(e){
 
            // function to disable the input of the credit card if i click bank transfer
               function disable(){
-              let creditCard =  document.getElementById("credit-card");
-               let bankTrans = document.getElementById("bank-trans");
-                    if (creditCard.checked){
-                        document.getElementById("card-number").disabled = false;
-                        document.getElementById("card-code").disabled = false;
-                        document.getElementById("card-expire").disabled = false;
-                        document.getElementById("bank-number").disabled = true;
-                    } else if (bankTrans.checked){
-                        document.getElementById("card-number").disabled = true;
-                        document.getElementById("card-code").disabled = true;
-                        document.getElementById("card-expire").disabled = true;
-                        document.getElementById("bank-number").disabled = false;
+              
+                        document.getElementById("card-number").setAttribute("disabled", "");
+                        document.getElementById("card-code").setAttribute("disabled", "");
+                        document.getElementById("card-expire").setAttribute("disabled", "");
+                    } if (document.getElementById("number-bank").disabled) {
+                        document.getElementById("card-number").removeAttribute("disabled");
+                      
                     }
-                }
+            function disabletrans(){
+                document.getElementById("number-bank").setAttribute("disabled", "");
+            } if (document.getElementById("card-number").disabled) {
+                document.getElementById("card-expire").setAttribute("disabled", "");
+                document.getElementById("card-number").removeAttribute("disabled");
+                document.getElementById("card-code").removeAttribute("disabled");
+                
+            }
                 
 
-            
+            document.getElementById("nashe").addEventListener("click",chequear)
+            function chequear(){
+                if ((checkExpress.checked || checkPremium.checked || checkStandard.checked) && document.getElementById("esquina").value != "" && 
+                document.getElementById("numero").value != "" && document.getElementById("calle").value != "") {
+                    alert("Compra con exito");
+                    
+                } else {
+                    alert("nao nao");
+                }
+                 } 
+             
 
 
          
